@@ -1,4 +1,4 @@
-# Proj 0
+# Proj 0 - Universe Simulator
 
 Run:  
 
