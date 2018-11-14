@@ -1,4 +1,4 @@
-/** Simpler demo of the In class. */
+i/** Simpler demo of the In class. */
 public class BasicInDemo {
 	public static void main(String[] args) {
 		In in = new In("BasicInDemo_input_file.txt");
