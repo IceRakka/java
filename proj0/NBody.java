@@ -75,7 +75,7 @@ public class NBody{
 		StdOut.printf("%d\n", N);
 		StdOut.printf("%.2e\n", R);
 		for (i=0; i<N; i++){
-			StdOut.printf("%11.4e %11.4e %11.4e %11.4e %12s\n",
+			StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
 						  planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
 						  planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
 		}
