@@ -67,15 +67,15 @@ public class IntListTest {
     }
 
     @Test(timeout = 1000)
-    public void testReverse(){
-        IntList A = IntList.of(1,2,3);
-        IntList exp = IntList.of(3,2,1);
+    public void testReverse() {
+        IntList A = IntList.of(1, 2, 3);
+        IntList exp = IntList.of(3, 2, 1);
         assertEquals(exp, IntList.reverse(A));
-        assertNotEquals(IntList.of(1,2,3), A); //destructive function
+        assertNotEquals(IntList.of(1, 2, 3), A); //destructive function
 
         IntList B = null;
         IntList expB = null;
-        assertEquals(expB,IntList.reverse(B));
+        assertEquals(expB, IntList.reverse(B));
     }
 
     /** If you're running this from the command line, you'll need
