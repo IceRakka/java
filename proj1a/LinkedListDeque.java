@@ -108,7 +108,7 @@ public class LinkedListDeque<T> {
 		if (index < 0 || index >= size) {
 			return null;
 		}
-		return this.helper(index, sentinel);
+		return this.helper(index, sentinel.next);
 	}
 
 	private T helper(int index, Node curNode) {
