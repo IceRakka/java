@@ -1,10 +1,11 @@
-/** An ArrayDeque is a double-ended queue of Ts, 
- * which linked each other in both directions. */
+/** An ArrayDeque is a double-ended queue of Ts,
+ * which linked each other in both directions.
+ * @author ice */
 
 public class ArrayDeque<T> {
-	/** Initialize array, nextFirst, nextLast pointer and size. */
-	private T[] items;
-	public int nextFirst;
+    /** Initialize array, nextFirst, nextLast pointer and size. */
+    private T[] items;
+	private int nextFirst;
 	private int nextLast;
 	private int size;
 
@@ -16,17 +17,20 @@ public class ArrayDeque<T> {
 		size = 0;
 	}
 
+	/** Resize the ArrayDeque if old capacity is not enough.
+     * @param capacity */
 	private void resize(int capacity) {
 		T[] a = (T[]) new Object[capacity];
-		// arraycopy(src, srcpos, dest, destpos, length)
-		System.arraycopy(items, (nextFirst + 1) % size, a, 0, size - nextFirst - 1); 
+		/** arraycopy(src, srcpos, dest, destpos, length). */
+		System.arraycopy(items, (nextFirst + 1) % size, a, 0, size - nextFirst - 1);
 		System.arraycopy(items, 0, a, size - nextFirst - 1, nextLast);
 		nextFirst = capacity - 1;
 		nextLast = size;
 		items = a;
 	}
 
-	/** Adds x to the front of the list. */
+	/** Adds x to the front of the list.
+     * @param x */
 	public void addFirst(T x) {
 		if (size == items.length) {
 			resize(size + 1);
@@ -36,7 +40,8 @@ public class ArrayDeque<T> {
 		size += 1;
 	}
 
-	/** Adds x to the end of the list. */
+	/** Adds x to the end of the list.
+     * @param x */
 	public void addLast(T x) {
 		if (size == items.length) {
 			resize(size + 1);
@@ -59,8 +64,9 @@ public class ArrayDeque<T> {
 	/** Prints out every elements in list in order without changing it. */
 	public void printDeque() {
 		String s = "";
-		if ((nextFirst + 1) % items.length > nextLast) {
-			for (int i = (nextFirst + 1) % items.length; i < items.length; i++) {
+		int n = items.length;
+		if ((nextFirst + 1) % n > nextLast) {
+			for (int i = (nextFirst + 1) % n; i < n; i++) {
 				s += items[i].toString();
 				s += " ";
 			}
@@ -68,8 +74,8 @@ public class ArrayDeque<T> {
 				s += items[j].toString();
 				s += " ";
 			}
-		}else {
-			for (int p = (nextFirst + 1) % items.length; p < nextLast; p++) {
+		} else {
+			for (int p = (nextFirst + 1) % n; p < nextLast; p++) {
 				s += items[p].toString();
 				s += " ";
 			}
@@ -77,7 +83,8 @@ public class ArrayDeque<T> {
 		System.out.println(s);
 	}
 
-	/** Removes the first T in the list. */
+	/** Removes the first T in the list.
+     * @return first element */
 	public T removeFirst() {
 		if (size == 0) {
 			return null;
@@ -89,7 +96,8 @@ public class ArrayDeque<T> {
 		return ret;
 	}
 
-	/** Removes the last element in the list. */
+	/** Removes the last element in the list.
+     * @return last element */
 	public T removeLast() {
 		if (size == 0) {
 			return null;
@@ -101,7 +109,8 @@ public class ArrayDeque<T> {
 		return ret;
 	}
 
-	/** Returns the ith element of the list by iteration. */
+	/** Returns the ith element of the list by iteration.
+     * @param index */
 	public T get(int index) {
 		if (index < 0 || index >= size) {
 			return null;

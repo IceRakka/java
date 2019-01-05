@@ -1,4 +1,4 @@
-/** An DLList is a double-ended queue of Ts, 
+/** An DLList is a double-ended queue of Ts,
  * which linked each other in both directions. */
 public class LinkedListDeque<T> {
 	private class Node {
@@ -16,14 +16,6 @@ public class LinkedListDeque<T> {
 	/** Initialize sentinel node and size. */
 	private Node sentinel;
 	private int size;
-
-	/** Initialize an empty DLList with param. */
-	public LinkedListDeque(T x) {
-		sentinel = new Node(x, null, null);
-		sentinel.next = sentinel;
-		sentinel.prev = sentinel;
-		size = 0;
-	}
 
 	/** Intialize an empty DLList without param. */
 	public LinkedListDeque() {
@@ -119,10 +111,10 @@ public class LinkedListDeque<T> {
 		return this.helper(index, sentinel);
 	}
 
-	public T helper(int index, Node curNode) {
+	private T helper(int index, Node curNode) {
 		if (index == 0) {
 			return curNode.val;
 		}
-		return this.helper(index-1, curNode.next);
+		return this.helper(index - 1, curNode.next);
 	}
 }
