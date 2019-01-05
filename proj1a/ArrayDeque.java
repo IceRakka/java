@@ -109,7 +109,7 @@ public class ArrayDeque<T> {
 		if (size == 0) {
 			return null;
 		}
-		if (size > 16 && size - 1 < 0.25 * items.length) {
+		if (size >= 16 && size - 1 <= 0.25 * items.length) {
 			resize(size);
 		}
 		nextLast = (nextLast - 1 + items.length) % items.length;
