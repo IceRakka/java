@@ -22,10 +22,10 @@ public class ArrayDeque<T> {
 	private void resize(int capacity) {
 		T[] a = (T[]) new Object[capacity];
 		/** arraycopy(src, srcpos, dest, destpos, length). */
-		System.arraycopy(items, (nextFirst + 1) % size, a, 0, size - nextFirst - 1);
-		System.arraycopy(items, 0, a, size - nextFirst - 1, nextLast);
-		nextFirst = capacity - 1;
-		nextLast = size;
+		System.arraycopy(items, (nextFirst + 1) % size, a, 0, items.length - nextFirst - 1);
+		System.arraycopy(items, 0, a, items.length - nextFirst - 1, nextLast);
+		nextFirst = 0;
+		nextLast = size + 1;
 		items = a;
 	}
 
