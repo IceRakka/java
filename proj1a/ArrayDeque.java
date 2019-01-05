@@ -3,7 +3,7 @@
  * @author ice */
 
 public class ArrayDeque<T> {
-    /** Initialize array, nextFirst, nextLast pointer and size. */
+    /** Initialize the whole array, nextFirst, nextLast pointer and the real size. */
     private T[] items;
 	private int nextFirst;
 	private int nextLast;
@@ -91,8 +91,10 @@ public class ArrayDeque<T> {
 		}
 		nextFirst = (nextFirst + 1) % items.length;
 		T ret = items[nextFirst];
-		items[nextFirst] = null;
 		size -= 1;
+		if (size >= 16 && size < 0.25 * items.length) {
+			resize(size + 1);
+		}
 		return ret;
 	}
 
@@ -104,7 +106,6 @@ public class ArrayDeque<T> {
 		}
 		nextLast = (nextLast - 1 + items.length) % items.length;
 		T ret = items[nextLast];
-		items[nextLast] = null;
 		size -= 1;
 		return ret;
 	}
