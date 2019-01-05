@@ -23,8 +23,12 @@ public class ArrayDeque<T> {
 		T[] a = (T[]) new Object[capacity];
 		int n = items.length;
 		/** arraycopy(src, srcpos, dest, destpos, length). */
-		System.arraycopy(items, (nextFirst + 1) % n, a, 0, n - nextFirst - 1);
-		System.arraycopy(items, 0, a, n - nextFirst - 1, size - n + nextFirst + 1);
+		if (nextFirst > nextLast) {
+			System.arraycopy(items, (nextFirst + 1) % n, a, 0, n - nextFirst - 1);
+			System.arraycopy(items, 0, a, n - nextFirst - 1, size - n + nextFirst + 1);
+		} else {
+			System.arraycopy(items, (nextFirst + 1) % n, a, 0, nextLast - nextFirst - 1);
+		}
 		nextFirst = capacity - 1;
 		nextLast = size;
 		items = a;
@@ -91,7 +95,7 @@ public class ArrayDeque<T> {
 			return null;
 		}
 		if (size > 16 && size - 1 < 0.25 * items.length) {
-			resize(size * 2);
+			resize(size);
 		}
 		nextFirst = (nextFirst + 1) % items.length;
 		T ret = items[nextFirst];
@@ -106,7 +110,7 @@ public class ArrayDeque<T> {
 			return null;
 		}
 		if (size > 16 && size - 1 < 0.25 * items.length) {
-			resize(size * 2);
+			resize(size);
 		}
 		nextLast = (nextLast - 1 + items.length) % items.length;
 		T ret = items[nextLast];
