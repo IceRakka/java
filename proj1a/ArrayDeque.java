@@ -21,11 +21,12 @@ public class ArrayDeque<T> {
      * @param capacity */
 	private void resize(int capacity) {
 		T[] a = (T[]) new Object[capacity];
+		int n = items.length;
 		/** arraycopy(src, srcpos, dest, destpos, length). */
-		System.arraycopy(items, (nextFirst + 1) % size, a, 0, items.length - nextFirst - 1);
-		System.arraycopy(items, 0, a, items.length - nextFirst - 1, nextLast);
-		nextFirst = 0;
-		nextLast = size + 1;
+		System.arraycopy(items, (nextFirst + 1) % n, a, 0, n - nextFirst - 1);
+		System.arraycopy(items, 0, a, n - nextFirst - 1, size - n + nextFirst + 1);
+		nextFirst = capacity - 1;
+		nextLast = size;
 		items = a;
 	}
 
