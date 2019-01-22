@@ -15,4 +15,6 @@ CS 61B Spring 2018 @Berkeley
 1.2 lec 8  
 1.4 proj 1a  
 1.10 lec 9  
-1.11 lec 10
+1.11 lec 10  
+1.18 lec 11  
+1.21 lec 13
